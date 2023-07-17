@@ -17,4 +17,4 @@ class movies01(models.Model):
     Metacritic = models.CharField(max_length=20)
     Rating = models.FloatField()
     # Rate = models.CharField(max_length=5, choices=dropdown_choices)
-    Runtime = models.TimeField()
+    Runtime = models.CharField(max_length=20)
