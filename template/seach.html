@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search</title>
+    <style>
+        th,td{
+        border: 1px black solid;
+        }
+    </style>
+</head>
+<body>
+    {% if search %}
+        <h1> you search the Gener {{search}}</h1>
+        <h1>Movies_Data</h1>
+
+    <form class="d-flex" method="post"  action="{% url 'search' %}">
+        {% csrf_token %}
+        <input class="form-control me-2"
+        type="search" placeholder="Search Genre" aria-label="Search" name="searched">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+
+    </form>
+        {% endif %}
+    {% if Genre %}
+
+        <table>
+        <tr>
+            <th>Title</th>
+            <th>Poster</th>
+            <th>Genre</th>
+            <th>Rating</th>
+            <th>Year</th>
+            <th>Release</th>
+            <th>Rate</th>
+            <th>Metacritic</th>
+            <th>Runtime</th>
+        </tr>
+        {% for table_data in Genre %}
+            <tr>
+                <td>{{table_data.Title}}</td>
+                <td>{{table_data.Poster}}</td>
+                <td>{{table_data.Genre}}</td>
+                <td>{{table_data.Rating}}</td>
+                <td>{{table_data.Year}}</td>
+                <td>{{table_data.Release}}</td>
+                <td>{{table_data.Metacritic}}</td>
+                <td>{{table_data.Rate }}</td>
+                <td>{{table_data.Runtime}}</td>
+            </tr>
+        {% endfor %}
+        </table>
+        <button type="submit"> <a href="/signout"> SignOut</a> </button>
+    {% else %}
+        <h1>No Data</h1>
+    {% endif %}
+
+</body>
+</html>
